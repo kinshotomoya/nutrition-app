@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170510055854) do
     t.string   "p"
     t.string   "fe"
     t.string   "zn"
+    t.string   "cu"
     t.string   "mn"
     t.string   "i_d"
     t.string   "se"
@@ -86,10 +87,9 @@ ActiveRecord::Schema.define(version: 20170510055854) do
     t.string   "tan"
     t.string   "polyphent"
     t.string   "aceac"
-    t.integer  "food_id",           null: false
+    t.integer  "food_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["food_id"], name: "index_nutritives_on_food_id", using: :btree
   end
 
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
