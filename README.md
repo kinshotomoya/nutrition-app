@@ -48,7 +48,6 @@
 |ribf|integer|
 |nia|integer|
 |vitb6a|integer|
-|vitb6a|integer|
 |vitb12|integer|
 |fol|integer|
 |pantac|integer|
