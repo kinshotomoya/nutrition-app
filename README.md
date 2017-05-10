@@ -1,7 +1,7 @@
 # nutririon-app
 
 
-##nutritions table
+## nutritions table
 
 |column|type|
 |:---:|:---:|
@@ -69,7 +69,7 @@ foods tableと一対一の関係
 
 
 
-##foods table
+## foods table
 
 |column|type|
 |:---:|:---:|
@@ -85,7 +85,7 @@ foods tableと一対一の関係
 
 
 
-##recipes table
+## recipes table
 
 |column|type|
 |:---:|:---:|
@@ -98,7 +98,7 @@ foods table と多対多の関係
 ・has_many :food_recipes
 
 
-##food_recipes table
+## food_recipes table
 
 |column|type|
 |:---:|:---|
