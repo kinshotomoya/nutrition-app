@@ -23,6 +23,7 @@ class CreateNutritives < ActiveRecord::Migration[5.0]
       t.string :p
       t.string :fe
       t.string :zn
+      t.string :cu
       t.string :mn
       t.string :i_d
       t.string :se
@@ -57,7 +58,7 @@ class CreateNutritives < ActiveRecord::Migration[5.0]
       t.string :tan
       t.string :polyphent
       t.string :aceac
-      t.references :food, null: false
+      t.integer :food_id
 
       t.timestamps
     end
