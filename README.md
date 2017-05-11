@@ -5,63 +5,63 @@
 
 |column|type|
 |:---:|:---:|
-|enerc_kcal|integer|
-|water|integer|
-|protain|integer|
-|protainb_by_amino|integer|
-|lipid|integer|
-|fantnlea|integer|
-|fasat|integer|
-|fams|integer|
-|fapu|integer|
-|carbohydrate|integer|
-|choavlm|integer|
-|fibsol|integer|
-|fibins|integer|
-|fibtg|integer|
-|ash|integer|
-|ne|integer|
-|k|integer|
-|ca|integer|
-|mg|integer|
-|p|integer|
-|fe|integer|
-|zn|integer|
-|mn|integer|
-|id|integer|
-|se|integer|
-|cr|integer|
-|mo|integer|
-|retol|integer|
-|carta|integer|
-|cartb|integer|
-|crypxb|integer|
-|cartbeq|integer|
-|vita_rae|integer|
-|vitd|integer|
-|tocpha|integer|
-|tocphb|integer|
-|tocphg|integer|
-|tocphd|integer|
-|vitk|integer|
-|thiahcl|integer|
-|ribf|integer|
-|nia|integer|
-|vitb6a|integer|
-|vitb12|integer|
-|fol|integer|
-|pantac|integer|
-|biot|integer|
-|vitc|integer|
-|nacl_eq|integer|
-|alc|integer|
-|nitra|integer|
-|thebrn|integer|
-|caffn|integer|
-|tan|integer|
-|polyphent|integer|
-|aceac|integer|
-|food_id|references|
+|enerc_kcal|string|
+|water|string|
+|protain|string|
+|protainb_by_amino|string|
+|lipid|string|
+|fantnlea|string|
+|fasat|string|
+|fams|string|
+|fapu|string|
+|carbohydrate|string|
+|choavlm|string|
+|fibsol|string|
+|fibins|string|
+|fibtg|string|
+|ash|string|
+|ne|string|
+|k|string|
+|ca|string|
+|mg|string|
+|p|string|
+|fe|string|
+|zn|string|
+|mn|string|
+|id|string|
+|se|string|
+|cr|string|
+|mo|string|
+|retol|string|
+|carta|string|
+|cartb|string|
+|crypxb|string|
+|cartbeq|string|
+|vita_rae|string|
+|vitd|string|
+|tocpha|string|
+|tocphb|string|
+|tocphg|string|
+|tocphd|string|
+|vitk|string|
+|thiahcl|string|
+|ribf|string|
+|nia|string|
+|vitb6a|string|
+|vitb12|string|
+|fol|string|
+|pantac|string|
+|biot|string|
+|vitc|string|
+|nacl_eq|string|
+|alc|string|
+|nitra|string|
+|thebrn|string|
+|caffn|string|
+|tan|string|
+|polyphent|string|
+|aceac|string|
+|food_id|integer|
 
 belongs_to :food
 foods tableと一対一の関係
@@ -90,11 +90,15 @@ foods tableと一対一の関係
 |:---:|:---:|
 |name|string|
 |image|string|
+|user_id|references|
 
 
 foods table と多対多の関係
 ・has_many :foods, through: :food_recipes
 ・has_many :food_recipes
+
+users table と１対多の関係
+・belongs_to :user
 
 
 ## food_recipes table
@@ -108,3 +112,17 @@ foods table と多対多の関係
 foods table と ecipes table の中間テーブル
 belongs_to :food
 belongs_to :recipe
+
+
+## users table
+
+|column|type|
+|:---:|:---:|
+|name|string|
+|image|string|
+
+recipes table と一対多の関係
+・has_many :recipes
+
+
+
