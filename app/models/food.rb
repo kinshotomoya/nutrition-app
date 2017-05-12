@@ -1,3 +1,3 @@
 class Food < ApplicationRecord
-  has_one :nutrition
+  has_one :nutritive
 end
