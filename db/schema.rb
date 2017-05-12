@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511091832) do
+ActiveRecord::Schema.define(version: 20170512073001) do
 
   create_table "food_recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "food_id",    null: false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170511091832) do
     t.integer  "food_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["food_id"], name: "index_nutritives_on_food_id", using: :btree
   end
 
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
