@@ -4,7 +4,7 @@
     .row
       .col-md-6.col-sm-6
         / logo
-        / <div class="logo"><img src="logo.png" data-at2x="logo@2x.png" alt="logo"></div>
+        =link_to "ホーム", tops_path, class: "homebtn"
         / logo end
       .col-md-6.col-sm-6
         / social
@@ -40,7 +40,7 @@
             .col-md-5.center-block.col-sm-8.col-xs-11
               =form_tag(search_foods_path, method: "GET") do
                 .input-group
-                  =text_field :food, :name, {class: "form-control", placeholder: "（例）ぶた"} #:food :nameとすることでfood[:name]と入れ子構造にすることができる！
+                  =text_field :food, :name, {class: "form-control", placeholder: "（例）牛乳    ヨーグルト"} #:food :nameとすることでfood[:name]と入れ子構造にすることができる！
                   %sapn.input-group-btn
                     =submit_tag "検索", class: "btn btn-default"
               %p#mc-notification
@@ -69,36 +69,71 @@
       .col-lg-12
         .panel.panel-default
           .panel-heading
-            食品・栄養価一覧
+            食品・栄養価一覧(100gあたり)
           .panel-body
             %table#dataTables-example.table.table-striped.table-bordered.table-hover{width: "100%"}
               %thead
                 %tr
-                  %th 期生
-                  %th 名前
-                  %th 大学・学部
-                  %th 学籍番号
-                  %th 勤務先・役割
-                  %th 設定
-                  %th 期生
-                  %th 名前
-                  %th 大学・学部
-                  %th 学籍番号
-                  %th 勤務先・役割
-                  %th 設定
-                  %th 期生
-                  %th 名前
-                  %th 大学・学部
-                  %th 学籍番号
-                  %th 勤務先・役割
-                  %th 設定
+                  %th 食品名
+                  %th カロリー(kcal)
+                  %th タンパク質(g)
+                  %th 脂質(g)
+                  %th 炭水化物(g)
+                  %th ナトリウム(mg)
+                  %th カルシウム(mg)
+                  %th 鉄(mg)
+                  %th マグネシウム(mg)
+                  %th カリウム(mg)
+                  %th 銅(mg)
+                  %th 亜鉛(mg)
+                  %th ビタミンA(µg)
+                  %th ビタミンK(µg)
+                  %th ビタミンD(µg)
+                  %th ビタミンB1(mg)
+                  %th ビタミンB2(mg)
+                  %th ビタミンB6(mg)
+                  %th ビタミンC(mg)
               %tbody
                 -@foods.each do |food|
                   %tr.odd.gradeX
                     %td
                       =food.name
-                    / %td
-                    /   =aduser.name
+                    %td
+                      =food.nutritive.enerc_kcal
+                    %td
+                      =food.nutritive.protain
+                    %td
+                      =food.nutritive.lipid
+                    %td
+                      =food.nutritive.carbohydrate
+                    %td
+                      =food.nutritive.ne
+                    %td
+                      =food.nutritive.ca
+                    %td
+                      =food.nutritive.fe
+                    %td
+                      =food.nutritive.mg
+                    %td
+                      =food.nutritive.k
+                    %td
+                      =food.nutritive.cu
+                    %td
+                      =food.nutritive.zn
+                    %td
+                      =food.nutritive.retol
+                    %td
+                      =food.nutritive.vitk
+                    %td
+                      =food.nutritive.vitd
+                    %td
+                      =food.nutritive.thiahcl
+                    %td
+                      =food.nutritive.ribf
+                    %td
+                      =food.nutritive.vitb6a
+                    %td
+                      =food.nutritive.vitc
                     / %td
                     /   =aduser.university
                     / %td

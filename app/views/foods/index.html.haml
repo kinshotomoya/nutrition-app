@@ -4,7 +4,7 @@
     .row
       .col-md-6.col-sm-6
         / logo
-        / <div class="logo"><img src="logo.png" data-at2x="logo@2x.png" alt="logo"></div>
+        =link_to "ホーム", tops_path, class: "homebtn"
         / logo end
       .col-md-6.col-sm-6
         / social
@@ -76,22 +76,23 @@
                 %tr
                   %th 食品名
                   %th カロリー
-                  %th 大学・学部
-                  %th 学籍番号
-                  %th 勤務先・役割
-                  %th 設定
-                  %th 食品名
-                  %th カロリー
-                  %th 大学・学部
-                  %th 学籍番号
-                  %th 勤務先・役割
-                  %th 設定
-                  %th 食品名
-                  %th カロリー
-                  %th 大学・学部
-                  %th 学籍番号
-                  %th 勤務先・役割
-                  %th 設定
+                  %th タンパク質
+                  %th 脂質
+                  %th 炭水化物
+                  %th ナトリウム(mg)
+                  %th カルシウム(mg)
+                  %th 鉄(mg)
+                  %th マグネシウム(mg)
+                  %th カリウム(mg)
+                  %th 銅(mg)
+                  %th 亜鉛(mg)
+                  %th ビタミンA(µg)
+                  %th ビタミンK(µg)
+                  %th ビタミンD(µg)
+                  %th ビタミンB1(mg)
+                  %th ビタミンB2(mg)
+                  %th ビタミンB6(mg)
+                  %th ビタミンC(mg)
               / %tbody
               /   -@adusers.each do |aduser|
               /     %tr.odd.gradeX
