@@ -12,7 +12,7 @@
           %ul
             / <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
             %li
-              %div 食品検索
+              =link_to "食品検索", foods_path
             / <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
             %li
               %div 栄養価検索
@@ -33,84 +33,116 @@
         / welcome-message
         %header.welcome-message.text-center
           %h1
-            %span.rotate 食品・栄養価検索アプリ
+            %span.rotate 食品名検索
         / welcome-message end
-        / sub-form
-        /
-          <div class="sub-form text-center">
-          <div class="row">
-          <div class="col-md-5 center-block col-sm-8 col-xs-11">
-          <form role="form" id="mc-form" action="http://csmthemes.us3.list-manage.com/subscribe/post-json?u=9666c25a337f497687875a388&amp;id=5b881a50fb&amp;c=?">
-          <div class="input-group">
-          <input type="email" class="form-control" placeholder="Email" required value="" name="EMAIL">
-          <span class="input-group-btn">
-          <button type="submit" class="btn btn-default" id="mc-subscribe" value="Subscribe" name="subscribe">Submit<i class="fa fa-paper-plane"></i></button>
-          </span> </div>
-          </form>
-          <p id="mc-notification"></p>
-          </div>
-          </div>
-          </div>
-        / sub-form end
+        .sub-form.text-center
+          .row
+            .col-md-5.center-block.col-sm-8.col-xs-11
+              =form_tag(search_foods_path, method: "GET") do #method: "GET"をつけないと検索できない！
+                .input-group
+                  =text_field :food, :name, {class: "form-control", placeholder: "（例）ぶた"} #:food :nameとすることでfood[:name]と入れ子構造にすることができる！
+                  %sapn.input-group-btn
+                    =submit_tag "検索", class: "btn btn-default"
+              / %p#mc-notification
+          / <div class="sub-form text-center">
+          / <div class="row">
+          / <div class="col-md-5 center-block col-sm-8 col-xs-11">
+          / <form role="form" id="mc-form" action="http://csmthemes.us3.list-manage.com/subscribe/post-json?u=9666c25a337f497687875a388&amp;id=5b881a50fb&amp;c=?">
+          / <div class="input-group">
+          / <input type="email" class="form-control" placeholder="Email" required value="" name="EMAIL">
+          / <span class="input-group-btn">
+          / <button type="submit" class="btn btn-default" id="mc-subscribe" value="Subscribe" name="subscribe">Submit<i class="fa fa-paper-plane"></i></button>
+          / </span> </div>
+          / </form>
+          / <p id="mc-notification"></p>
+          / </div>
+          / </div>
+          / </div>
         / Countdown
-        %ul.countdown.text-center
-          健康な食生活をしよう！
-          / %li
-          /   %span.days 00
-          /   %p.days_ref days
-          / %li.seperator |
-          / %li
-          /   %span.hours 00
-          /   %p.hours_ref hours
-          / %li.seperator |
-          / %li
-          /   %span.minutes 00
-          /   %p.minutes_ref minutes
-          / %li.seperator |
-          / %li
-          /   %span.seconds 00
-          /   %p.seconds_ref seconds
         / Countdown end
 / main end
 / Features
 %section.features.section-spacing
   .container
-    %h2.text-center このアプリの項目
+    %h2.text-center 検索結果
     .row
-      .col-md-6
-        .wow.fadeInUp.product-features.row
-          .col-md-2.col-sm-2.col-xs-2.text-center
-            %i.fa.fa-rocket.fa-3x
-          .col-md-10.col-sm-10.col-xs-10
-            / features 3
-            %h4 食品検索
-            %p 食品の名前から、含まれている栄養価を検索することができます。
-            / features 3 end
-        .wow.fadeInUp.product-features.row
-          .col-md-2.col-sm-2.col-xs-2.text-center
-            %i.fa.fa-bullhorn.fa-3x
-          .col-md-10.col-sm-10.col-xs-10
-            / features 4
-            %h4 栄養価検索
-            %p 栄養価の名前から、その栄養価が多く含まれている食材を検索することができます。
-            / features 4 end
-      .col-md-6
-        .wow.fadeInUp.product-features.row
-          .col-md-2.col-sm-2.col-xs-2.text-center
-            %i.fa.fa-bicycle.fa-3x
-          .col-md-10.col-sm-10.col-xs-10
-            / features 3
-            %h4 オススメ料理一覧
-            %p 指定した食材が多く含まれている料理を閲覧することができます。
-            / features 3 end
-        .wow.fadeInUp.product-features.row
-          .col-md-2.col-sm-2.col-xs-2.text-center
-            %i.fa.fa-paper-plane-o.fa-3x
-          .col-md-10.col-sm-10.col-xs-10
-            / features 4
-            %h4 新規登録
-            %p このアプリに登録すると、自分が作った健康料理を掲載することができます！
-            / features 4 end
+      .col-lg-12
+        .panel.panel-default
+          .panel-heading
+            食品・栄養価一覧
+          .panel-body
+            %table#dataTables-example.table.table-striped.table-bordered.table-hover{width: "100%"}
+              %thead
+                %tr
+                  %th 食品名
+                  %th カロリー
+                  %th 大学・学部
+                  %th 学籍番号
+                  %th 勤務先・役割
+                  %th 設定
+                  %th 食品名
+                  %th カロリー
+                  %th 大学・学部
+                  %th 学籍番号
+                  %th 勤務先・役割
+                  %th 設定
+                  %th 食品名
+                  %th カロリー
+                  %th 大学・学部
+                  %th 学籍番号
+                  %th 勤務先・役割
+                  %th 設定
+              / %tbody
+              /   -@adusers.each do |aduser|
+              /     %tr.odd.gradeX
+              /       %td(class="kisei-color-#{aduser.adkisei_id}")
+              /         =aduser.adkisei.name
+              /       %td
+              /         =aduser.name
+              /       %td
+              /         =aduser.university
+              /       %td
+              /         =aduser.studentnumber
+              /       %td
+              /         =aduser.role
+              /       %td.center
+              /         =link_to admin_aduser_path(aduser.id), class: "detail-btn", style: "width: 50%; height: 100%; display: block; float: left;" do
+              /           詳細
+
+    / .row
+    /   .col-md-6
+    /     .wow.fadeInUp.product-features.row
+    /       .col-md-2.col-sm-2.col-xs-2.text-center
+    /         %i.fa.fa-rocket.fa-3x
+    /       .col-md-10.col-sm-10.col-xs-10
+    /         / features 3
+    /         %h4 食品検索
+    /         %p 食品の名前から、含まれている栄養価を検索することができます。
+    /         / features 3 end
+    /     .wow.fadeInUp.product-features.row
+    /       .col-md-2.col-sm-2.col-xs-2.text-center
+    /         %i.fa.fa-bullhorn.fa-3x
+    /       .col-md-10.col-sm-10.col-xs-10
+    /         / features 4
+    /         %h4 栄養価検索
+    /         %p 栄養価の名前から、その栄養価が多く含まれている食材を検索することができます。
+    /         / features 4 end
+    /   .col-md-6
+    /     .wow.fadeInUp.product-features.row
+    /       .col-md-2.col-sm-2.col-xs-2.text-center
+    /         %i.fa.fa-bicycle.fa-3x
+    /       .col-md-10.col-sm-10.col-xs-10
+    /         / features 3
+    /         %h4 オススメ料理一覧
+    /         %p 指定した食材が多く含まれている料理を閲覧することができます。
+    /         / features 3 end
+    /     .wow.fadeInUp.product-features.row
+    /       .col-md-2.col-sm-2.col-xs-2.text-center
+    /         %i.fa.fa-paper-plane-o.fa-3x
+    /       .col-md-10.col-sm-10.col-xs-10
+    /         / features 4
+    /         %h4 新規登録
+    /         %p このアプリに登録すると、自分が作った健康料理を掲載することができます！
 / Features end
 / Twitter feed
 /
@@ -175,28 +207,28 @@
   </section>
 / CONTACT END
 / site-footer
-%footer.site-footer.section-spacing
-  .container
-    .row
-      .col-md-12.text-center
-        / social
-        %ul.social
-          %li.wow.fadeInUp
-            %a{:href => "https://twitter.com/", :target => "_blank"}
-              %i.fa.fa-twitter
-          %li.wow.fadeInUp
-            %a{:href => "https://www.facebook.com/", :target => "_blank"}
-              %i.fa.fa-facebook
-          %li.wow.fadeInUp
-            %a{:href => "https://plus.google.com/", :target => "_blank"}
-              %i.fa.fa-google-plus
-        / social end
-        %small.wow.fadeInUp
-          © 2015 All rights reserved. Made with
-          %i.fa.fa-heart.pulse
-          by
-          %a{:href => "http://www.designstub.com/"} Designstub
-/ site-footer end
-/ PRELOAD
-#preloader
-  #status
+/ %footer.site-footer.section-spacing
+/   .container
+/     .row
+/       .col-md-12.text-center
+/         / social
+/         %ul.social
+/           %li.wow.fadeInUp
+/             %a{:href => "https://twitter.com/", :target => "_blank"}
+/               %i.fa.fa-twitter
+/           %li.wow.fadeInUp
+/             %a{:href => "https://www.facebook.com/", :target => "_blank"}
+/               %i.fa.fa-facebook
+/           %li.wow.fadeInUp
+/             %a{:href => "https://plus.google.com/", :target => "_blank"}
+/               %i.fa.fa-google-plus
+/         / social end
+/         %small.wow.fadeInUp
+/           © 2015 All rights reserved. Made with
+/           %i.fa.fa-heart.pulse
+/           by
+/           %a{:href => "http://www.designstub.com/"} Designstub
+/ / site-footer end
+/ / PRELOAD
+/ #preloader
+/   #status
