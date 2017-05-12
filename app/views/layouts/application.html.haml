@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Nutrition
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = yield
+    %footer.site-footer.section-spacing
+      .container
+        .row
+          .col-md-12.text-center
+            / social
+            %ul.social
+              %li.wow.fadeInUp
+                %a{:href => "https://twitter.com/", :target => "_blank"}
+                  %i.fa.fa-twitter
+              %li.wow.fadeInUp
+                %a{:href => "https://www.facebook.com/", :target => "_blank"}
+                  %i.fa.fa-facebook
+              %li.wow.fadeInUp
+                %a{:href => "https://plus.google.com/", :target => "_blank"}
+                  %i.fa.fa-google-plus
+            / social end
+            %small.wow.fadeInUp
+              © 2015 All rights reserved. Made with
+              %i.fa.fa-heart.pulse
+              by
+              %a{:href => "http://www.designstub.com/"} Designstub
+    / site-footer end
+    / PRELOAD
+    #preloader
+      #status
