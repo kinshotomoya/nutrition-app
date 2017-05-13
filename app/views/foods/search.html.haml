@@ -4,7 +4,7 @@
     .row
       .col-md-6.col-sm-6
         / logo
-        =link_to "ホーム", tops_path, class: "homebtn"
+        =link_to "ホーム", root_path, class: "homebtn"
         / logo end
       .col-md-6.col-sm-6
         / social
@@ -15,7 +15,7 @@
               =link_to "食品検索", foods_path
             / <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
             %li
-              %div 栄養価検索
+              =link_to "栄養価検索", nutritives_path
             / <li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
             %li
               %div オススメ料理一覧

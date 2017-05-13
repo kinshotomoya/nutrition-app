@@ -4,7 +4,7 @@
     .row
       .col-md-6.col-sm-6
         / logo
-        =link_to "ホーム", tops_path, class: "homebtn"
+        =link_to "ホーム", root_path, class: "homebtn"
         / logo end
       .col-md-6.col-sm-6
         / social
@@ -15,7 +15,7 @@
               =link_to "食品検索", foods_path
             / <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
             %li
-              %div 栄養価検索
+              =link_to "栄養価検索", nutritives_path
             / <li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
             %li
               %div オススメ料理一覧
@@ -40,7 +40,7 @@
             .col-md-5.center-block.col-sm-8.col-xs-11
               =form_tag(search_foods_path, method: "GET") do #method: "GET"をつけないと検索できない！
                 .input-group
-                  =text_field :food, :name, {class: "form-control", placeholder: "（例）ぶた"} #:food :nameとすることでfood[:name]と入れ子構造にすることができる！
+                  =text_field :food, :name, {class: "form-control", placeholder: "（例）牛乳    ヨーグルト"} #:food :nameとすることでfood[:name]と入れ子構造にすることができる！
                   %sapn.input-group-btn
                     =submit_tag "検索", class: "btn btn-default"
               / %p#mc-notification
@@ -69,7 +69,7 @@
       .col-lg-12
         .panel.panel-default
           .panel-heading
-            食品・栄養価一覧
+            食品・栄養価一覧(100gあたり)
           .panel-body
             %table#dataTables-example.table.table-striped.table-bordered.table-hover{width: "100%"}
               %thead
