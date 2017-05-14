@@ -1,0 +1,35 @@
+.login-back {
+  background: url(top.jpg) no-repeat center center;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.login-back:before{
+  content: '';
+  background: inherit;/*.bgImageで設定した背景画像を継承する*/
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  /*ブラー効果で画像の端がボヤけた分だけ位置を調整*/
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;/*重なり順序を一番下にしておく*/
+}
+
+.panel-margin {
+  margin-top: 10vh;
+}
+
+.avatar-form {
+  margin-bottom: 10px;
+}

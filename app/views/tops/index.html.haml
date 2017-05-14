@@ -21,12 +21,12 @@
               %div オススメ料理一覧
             -unless current_user
               %li
-                %div 新規登録
+                =link_to "新規登録", new_user_registration_path
               %li
                 %div ログイン
             -if user_signed_in?
               %li
-                %div マイページ
+                =link_to "マイページ", user_path(current_user.id)
         / social end
     .row
       .col-md-12
@@ -108,8 +108,12 @@
             %i.fa.fa-paper-plane-o.fa-3x
           .col-md-10.col-sm-10.col-xs-10
             / features 4
-            %h4 新規登録
-            %p このアプリに登録すると、自分が作った健康料理を掲載することができます！
+            -unless current_user
+              %h4 新規登録
+              %p このアプリに登録すると、自分が作った健康料理を掲載することができます！
+            -if user_signed_in?
+              %h4 マイページ
+              %p プロフィール編集や自分が投稿した健康料理、健康料理の投稿ができます。
             / features 4 end
 / Features end
 / Twitter feed
