@@ -1,3 +1,21 @@
-// Place all the styles related to the recipes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.recipe-image {
+  margin: 20px auto;
+  width: 80%;
+  height: 250px;
+  border: 2px solid #eee;
+  background: url(no-face.png) no-repeat center center;
+  background-size: cover;
+}
+.recipe-image-center {
+  margin: 0 auto;
+  float: none;
+}
+
+.recipe-image-text-center {
+  text-align: center;
+}
+
+.recipe-name {
+  text-align: center;
+}
