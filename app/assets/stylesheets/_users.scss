@@ -5,8 +5,50 @@
   border-radius: 50%; //画像が丸くなる
     //画像の周りを線で囲って、色をつけている。//
   border: 2px solid #eee;
+  // background: url(no-face.png) no-repeat center center;
+  background-size: cover;
+}
+
+// .yyy {
+//   background-color: ;
+// }
+
+
+.top-user-avatar {
+  // margin: 20px auto;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; //画像が丸くなる
+    //画像の周りを線で囲って、色をつけている。//
+  border: 2px solid #eee;
+  // background: url(no-face.png) no-repeat center center;
+  background-size: cover;
+}
+
+.user-editing-avatar{
+  margin: 20px auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; //画像が丸くなる
+    //画像の周りを線で囲って、色をつけている。//
+  border: 2px solid #eee;
   background: url(no-face.png) no-repeat center center;
   background-size: cover;
+  display: block;
+}
+
+.thumb1 {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; //画像が丸くなる
+    //画像の周りを線で囲って、色をつけている。//
+  border: 2px solid #eee;
+  background-size: cover;
+}
+
+.user-editing-avatar:hover {
+  color: red;
 }
 
 .user-name {
@@ -30,4 +72,29 @@
 .food-search-form-btn {
   height: 36px;
   margin-bottom: 4px;
+}
+
+.recipe-create-btn {
+  float: right;
+  height: 36px;
+  margin: 10px 10px;
+}
+
+.edit-profile-btn {
+  float: right;
+  height: 36px;
+  margin: 10px 10px;
+}
+.profile-edit-btn {
+  margin: 20px auto;
+  text-align: center;
+  display: block;
+}
+.aaaa {
+  margin: 50px 0;
+  font-weight: 600;
+  font-size: 30px;
+}
+.recipe-food-amount, .recipe-food-amount-tani {
+  display: inline;
 }

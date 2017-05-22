@@ -1,17 +1,18 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%body
+  .login-back
+    .row
+      .col-md-4.col-md-offset-4
+        .h3 このアプリの画像を貼る
+        .login-panel.panel.panel-default.panel-margin
+          .panel-heading
+            %h3.panel-title ログイン
+          .panel-body
+            =form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              %fieldset
+                .form-group
+                  =f.label :メールアドレス
+                  =f.email_field :email, autofocus: true, placeholder: "例）food@gmail.com", class: "form-control", required: true
+                .form-group
+                  =f.label :パスワード
+                  =f.password_field :password, autofocus: "off", placeholder: "password", class: "form-control", required: true
+                =f.submit "ログイン", class: "btn btn-lg btn-success btn-block"

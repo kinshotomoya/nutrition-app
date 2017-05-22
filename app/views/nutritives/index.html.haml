@@ -26,7 +26,11 @@
                 %div ログイン
             -if user_signed_in?
               %li
-                %div マイページ
+                =link_to user_path(current_user.id) do
+                  -if @user.avatar.present?
+                    .top-user-avatar{{style: "background: url(#{@user.avatar}) no-repeat center center; background-size: cover;"}}
+                  -else
+                    .user-avatar{{style: "background: url(../assets/no-face.png) no-repeat center center; background-size: cover;"}}
         / social end
     .row
       .col-md-12
@@ -88,7 +92,6 @@
                   %th 銅(mg)
                   %th 亜鉛(mg)
                   %th ビタミンA(µg)
-                  %th ビタミンK(µg)
                   %th ビタミンD(µg)
                   %th ビタミンB1(mg)
                   %th ビタミンB2(mg)
