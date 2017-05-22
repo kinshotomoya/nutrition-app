@@ -26,12 +26,18 @@
                 %div ログイン
             -if user_signed_in?
               %li
-                =link_to "マイページ", user_path(current_user.id)
+                =link_to user_path(current_user.id) do
+                  -if @user.avatar.present?
+                    .top-user-avatar{{style: "background: url(#{@user.avatar}) no-repeat center center; background-size: cover;"}}
+                  -else
+                    .top-user-avatar{{style: "background: url(../assets/no-face.png) no-repeat center center; background-size: cover;"}}
         / social end
     .row
       .col-md-12
-        / welcome-message
-        .user-avatar
+        -if @user.avatar.present?
+          .user-avatar{{style: "background: url(#{@user.avatar}) no-repeat center center; background-size: cover;"}}
+        -else
+          .user-avatar{{style: "background: url(../assets/no-face.png) no-repeat center center; background-size: cover;"}}
         .user-name
           =current_user.name
         / %header.welcome-message.text-center
@@ -57,59 +63,66 @@
         / sub-form end
         / Countdown
 %section.features.section-spacing
+  =link_to edit_user_path(current_user.id) do
+    %span.edit-profile-btn.btn.btn-default プロフィールを編集
+  =link_to new_user_recipe_path(current_user.id) do
+    %span.recipe-create-btn.btn.btn-default 料理を投稿
   .container
-    %h2.text-center 投稿した健康料理
+    .aaaa.text-center 投稿した健康料理
     =form_tag class: ".food-search-form" do
       .food-search-form
         =text_field :recipe, :food_id, class: "food-search-form-input", placeholder: "含まれている食品名で検索..."
         %sapn.food-search-form-btn
           =submit_tag "検索", class: "btn btn-default food-search-form-btn"
     .row
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
+      -@recipes.each do |recipe|
+        .col-md-6.recipe-image-center
+          .wow.fadeInUp.product-features.row.recipe-image-text-center
+            .eee
+              .recipe-image{{style: "background: url(#{recipe.image}) no-repeat center center; background-size: cover;"}}
+            / features 3
+            %h3.recipe-name
+              =recipe.name
+            %h5 原材料名
+            -recipe.foods.each do |rf|
+              .recipe-food-name
+                =rf.name
+                .recipe-food-amount
+                  =recipe.get_amount_value(recipe, rf)
+                  .recipe-food-amount-tani g
+      / .col-md-6.recipe-image-center
+      /   .wow.fadeInUp.product-features.row.recipe-image-text-center
+      /     .eee
+      /       .recipe-image
+      /     / features 3
+      /     %h4.recipe-name 肉じゃが
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      / .col-md-6.recipe-image-center
+      /   .wow.fadeInUp.product-features.row.recipe-image-text-center
+      /     .eee
+      /       .recipe-image
+      /     / features 3
+      /     %h4.recipe-name 肉じゃが
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      / .col-md-6.recipe-image-center
+      /   .wow.fadeInUp.product-features.row.recipe-image-text-center
+      /     .eee
+      /       .recipe-image
+      /     / features 3
+      /     %h4.recipe-name 肉じゃが
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。
+      /     %p 食品の名前から、含まれている栄養価を検索することができます。

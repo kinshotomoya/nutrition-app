@@ -10,6 +10,7 @@ module Nutrition
   class Application < Rails::Application
     config.to_prepare do
       Devise::RegistrationsController.layout "devise"
+      RecipesController.layout "recipe"
     end
   end
 end

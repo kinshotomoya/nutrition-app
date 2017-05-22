@@ -23,3 +23,7 @@
 //= require retina.min.js
 //= require tweetie.min.js
 //= require wow.min.js
+//= require jquery.uploadThumbs.js
+//= require bootstrap.js
+
+

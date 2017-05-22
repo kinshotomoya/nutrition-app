@@ -12,21 +12,29 @@
           %ul
             / <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
             %li
-              =link_to "食品検索", foods_path
+              =link_to "食品検索", foods_path, class: "www"
             / <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
             %li
-              =link_to "栄養価検索", nutritives_path
+              =link_to "栄養価検索", nutritives_path, class: "www"
             / <li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
             %li
               %div オススメ料理一覧
             -unless current_user
               %li
-                =link_to "新規登録", new_user_registration_path
+                =link_to "新規登録", new_user_registration_path, class: "www"
               %li
-                %div ログイン
+                =link_to "ログイン", new_user_session_path, class: "www"
             -if user_signed_in?
-              %li
-                =link_to "マイページ", user_path(current_user.id)
+              %li.dropdown
+                -if @user.avatar.present?
+                  .top-user-avatar{{style: "background: url(#{@user.avatar}) no-repeat center center; background-size: cover;"}, "data-toggle": "dropdown"}
+                -else
+                  .top-user-avatar{{style: "background: url(../assets/no-face.png) no-repeat center center; background-size: cover;"}, "data-toggle": "dropdown"}
+                %ul.dropdown-menu.yyy{"role": "menu"}
+                  =link_to user_path(current_user.id) do
+                    %li マイページ
+                  =link_to destroy_user_session_path, method: :delete do
+                    %li ログアウト
         / social end
     .row
       .col-md-12

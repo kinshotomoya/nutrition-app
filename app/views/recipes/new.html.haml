@@ -1,2 +1,69 @@
-%h1 Recipes#new
-%p Find me in app/views/recipes/new.html.erb
+%body
+  .recipe-back
+  .container
+    .row
+      .col-md-6.col-sm-6
+      .col-md-6.col-sm-6
+        .social.text-center
+          %ul
+            / <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            %li
+              =link_to "食品検索", foods_path, class: "www"
+            / <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            %li
+              =link_to "栄養価検索", nutritives_path, class: "www"
+            / <li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+            %li
+              %div オススメ料理一覧
+            -unless current_user
+              %li
+                =link_to "新規登録", new_user_registration_path, class: "www"
+              %li
+                =link_to "ログイン", new_user_session_path, class: "www"
+            -if user_signed_in?
+              %li.dropdown
+                -if @user.avatar.present?
+                  .top-user-avatar{{style: "background: url(#{@user.avatar}) no-repeat center center; background-size: cover;"}, "data-toggle": "dropdown"}
+                -else
+                  .top-user-avatar{{style: "background: url(../assets/no-face.png) no-repeat center center; background-size: cover;"}, "data-toggle": "dropdown"}
+                %ul.dropdown-menu.yyy{"role": "menu"}
+                  =link_to user_path(current_user.id) do
+                    %li マイページ
+                  =link_to destroy_user_session_path, method: :delete do
+                    %li ログアウト
+  .container
+    .row
+      .col-lg-12
+        .panel.panel-default
+          .panel-heading
+            Users Create Form
+          .panel-body
+            .row
+              .col-md-6.recipe-image-center
+                =form_for [@user, @recipe] do |f|
+                  %label.wow.product-features.row.recipe-image-text-center.recipe-image
+                    =f.file_field :image, style: "display: none;"
+                  =f.text_field :name, class: "form-control", placeholder: "料理名"
+                  .food_genre
+                    =f.label :主な食材（１）
+                    =hidden_field_tag 'recipe[food_ids][]', '1'
+                    =text_field_tag 'recipe[amounts][]'
+                  .food_genre
+                    =f.label :主な食材（2）
+                    =hidden_field_tag 'recipe[food_ids][]', '2'
+                    =text_field_tag 'recipe[amounts][]'
+                  .food_genre
+                    =f.label :主な食材（3）
+                    =hidden_field_tag 'recipe[food_ids][]', '3'
+                    =text_field_tag 'recipe[amounts][]'
+                  =f.submit '作成', class: "btn btn-default"
+
+:javascript
+  $(function() {
+      // jQuery Upload Thumbs
+      $('form input:file').uploadThumbs({
+          position : '.wow',      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                             // any: arbitrarily jquery selector
+          imgbreak : true    // append <br> after thumbnail images
+      });
+  });
