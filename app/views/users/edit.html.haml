@@ -78,54 +78,21 @@
         %sapn.food-search-form-btn
           =submit_tag "検索", class: "btn btn-default food-search-form-btn"
     .row
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-      .col-md-6.recipe-image-center
-        .wow.fadeInUp.product-features.row.recipe-image-text-center
-          .eee
-            .recipe-image
-          / features 3
-          %h4.recipe-name 肉じゃが
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
-          %p 食品の名前から、含まれている栄養価を検索することができます。
+      -@recipes.each do |recipe|
+        .col-md-6.recipe-image-center
+          .wow.fadeInUp.product-features.row.recipe-image-text-center
+            .eee
+              .recipe-image{{style: "background: url(#{recipe.image}) no-repeat center center; background-size: cover;"}}
+            / features 3
+            %h3.recipe-name
+              =recipe.name
+            %h5 原材料名
+            -recipe.foods.each do |rf|
+              .recipe-food-name
+                =rf.name
+                .recipe-food-amount
+                  =recipe.get_amount_value(recipe, rf)
+                  .recipe-food-amount-tani g
 
 :javascript
   $(function() {
