@@ -43,20 +43,35 @@
                 =form_for [@user, @recipe] do |f|
                   %label.wow.product-features.row.recipe-image-text-center.recipe-image
                     =f.file_field :image, style: "display: none;"
-                  =f.text_field :name, class: "form-control", placeholder: "料理名"
-                  .food_genre
-                    =f.label :主な食材（１）
-                    =hidden_field_tag 'recipe[food_ids][]', '1'
-                    =text_field_tag 'recipe[amounts][]'
-                  .food_genre
-                    =f.label :主な食材（2）
-                    =hidden_field_tag 'recipe[food_ids][]', '2'
-                    =text_field_tag 'recipe[amounts][]'
-                  .food_genre
-                    =f.label :主な食材（3）
-                    =hidden_field_tag 'recipe[food_ids][]', '3'
-                    =text_field_tag 'recipe[amounts][]'
-                  =f.submit '作成', class: "btn btn-default"
+                  =f.text_field :name, class: "form-control", placeholder: "料理名", required: true
+                  .food_genre1
+                    =f.label :主な食材（１）, class: "label1"
+                    .wrapper-input1
+                      %input.form-control#js-food-search-form1{placeholder: "食品を検索..."}
+                        #js-food-search-ul1
+                          %ul.js-search-food-list1
+                    .wrapper-amount-form
+                      .amount-tain g
+                      =text_field_tag 'recipe[amounts][]', "", placeholder: "100"
+                  .food_genre2
+                    =f.label :主な食材（2）, class: "label2"
+                    .wrapper-input2
+                      %input.form-control#js-food-search-form2{placeholder: "食品を検索..."}
+                        #js-food-search-ul2
+                          %ul.js-search-food-list2
+                    .wrapper-amount-form
+                      .amount-tain g
+                      =text_field_tag 'recipe[amounts][]', "", placeholder: "100"
+                  .food_genre3
+                    =f.label :主な食材（3）, class: "label3"
+                    .wrapper-input3
+                      %input.form-control#js-food-search-form3{placeholder: "食品を検索..."}
+                        #js-food-search-ul3
+                          %ul.js-search-food-list3
+                    .wrapper-amount-form
+                      .amount-tain g
+                      =text_field_tag 'recipe[amounts][]', "", placeholder: "100"
+                    =f.submit '作成', class: "btn btn-default"
 
 :javascript
   $(function() {
